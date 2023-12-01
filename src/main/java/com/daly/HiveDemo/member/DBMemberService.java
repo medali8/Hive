@@ -47,7 +47,7 @@ public class DBMemberService implements MemberService{
     @Override
     @Transactional
     public Member updateMember(Member m) {
-            String cin = m.getCin_mem();
+            String cin = m.getCin();
     Member existingMember = repo.findByCin(cin);
 
     

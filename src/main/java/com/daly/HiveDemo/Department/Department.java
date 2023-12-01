@@ -2,12 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.daly.HiveDemo.member.department;
+package com.daly.HiveDemo.Department;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -20,8 +18,7 @@ import jakarta.persistence.Table;
 public class Department {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_dep;
+    private int id_dep ;
     
     @Column(name="dep_name")
     private String dep_name;
@@ -29,20 +26,27 @@ public class Department {
     public Department(){
         
     }
-    public Department(int id , String dep_name){
-        this.id_dep = id ;
+
+    public Department(int id_dep, String dep_name) {
+        this.id_dep = id_dep;
         this.dep_name = dep_name;
     }
-    public int getId_dep(){
-        return this.id_dep;
+
+    public int getId_dep() {
+        return id_dep;
     }
-    public void setID_dep(int id){
-        this.id_dep = id ;
+
+    public void setId_dep(int id_dep) {
+        this.id_dep = id_dep;
     }
-    public String getDep_name(){
-        return this.dep_name ;
+
+    public String getDep_name() {
+        return dep_name;
     }
-    public void setDep_name(String d){
-        this.dep_name=d;
+
+    public void setDep_name(String dep_name) {
+        this.dep_name = dep_name;
     }
+    
+    
 }

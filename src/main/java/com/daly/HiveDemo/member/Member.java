@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.daly.HiveDemo.member;
-import com.daly.HiveDemo.member.department.Department;
+import com.daly.HiveDemo.Department.Department;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -17,7 +17,7 @@ import jakarta.persistence.Table;
 @Table(name="member")
 public class Member {
     @Id
-    public String cin ; 
+    private String cin ; 
     
     private String Fname ;
     
@@ -43,10 +43,10 @@ public class Member {
     
     
     
-    public String getCin_mem(){
+    public String getCin(){
         return this.cin ;
     }
-    public void setCin_mem(String c){
+    public void setCin(String c){
         this.cin = c ;
     }
     
@@ -95,9 +95,9 @@ public class Member {
         
     }
     public Member(
-            String cin_mem, String Fname, String Lname, String PhoneNumber, String email,Department d )
+            String cin, String Fname, String Lname, String PhoneNumber, String email,Department d )
     {
-        this.cin = cin_mem;
+        this.cin = cin;
         this.Fname = Fname;
         this.Lname = Lname;
         this.PhoneNumber = PhoneNumber;

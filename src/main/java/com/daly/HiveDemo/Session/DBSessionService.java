@@ -30,8 +30,8 @@ public class DBSessionService implements SessionService{
     }
 
     @Override
-    public Session getById(int id) {
-        return this.repo.getById(id);
+    public Session findById(int id) {
+        return this.repo.findById(id);
     }
 
     @Override
@@ -40,8 +40,16 @@ public class DBSessionService implements SessionService{
     }
 
     @Override
-    public Session updateMember(Session s) {
-        return s;
+    public Session updateSession(Session s) {
+                 int id = s.getId_sess();
+        Session existingSession = repo.findById(id);
+        existingSession.setDateTime(s.getDateTime());
+        existingSession.setContext(s.getContext());
+
+        return repo.saveAndFlush(existingSession);
+    
+    
+
     }
     
 }

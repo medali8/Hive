@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author skndr
  */
 @RestController 
-@RequestMapping("/api/v1/members")
+@RequestMapping("/api/members")
 public class MemberController {
     
     private final MemberService service ;

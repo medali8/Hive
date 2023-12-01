@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.daly.HiveDemo.Session;
+package com.daly.HiveDemo.Admin;
 
+import com.daly.HiveDemo.*;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,43 +19,39 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author skndr
  */
-
 @RestController 
-@RequestMapping("/api/sessions")
-public class SessionController {
-
-    private final SessionService service ;
-    public SessionController(SessionService service){
+@RequestMapping("/api/admins")
+public class AdminController implements AdminService {
+    private final DBAdminService service ;
+    public AdminController(DBAdminService service){
         this.service = service ;
-    }
-    @PostMapping
-    public Session save(
-            @RequestBody Session s){
-        return this.service.Save(s);
     }
     
     @GetMapping
-    public List<Session> getAll(){
+    @Override
+    public List<Admin> getAll(){
         return this.service.getAll();
     }
     
+    @PostMapping
+    @Override
+    public Admin save(@RequestBody Admin a){
+        return this.service.save(a);
+    }
     @GetMapping("/{id}")
-    public Session getById(
-            @PathVariable int id){
-        return this.service.findById(id);
+    @Override
+    public Admin getById(@PathVariable int id){
+        return this.service.getById(id);
     }
-    
-    @DeleteMapping("/{id}")
-    public void DeleteById(@PathVariable int id){
-        this.service.DeleteById(id);
-    }
-    
     @PutMapping
-    public Session Update(@RequestBody Session s){
-        return this.service.updateSession(s);
+    @Override
+    public Admin update(@RequestBody Admin a){
+        return this.service.update(a);
     }
-
-    
-    
+    @DeleteMapping("/{id}")
+    @Override
+    public void deleteById(@PathVariable int id){
+        this.service.deleteById(id);
+    }
     
 }
